@@ -4,11 +4,44 @@
     "hero.webp",
     "logo.webp"
   ],
-  "products": [
-    "01 Womens Colour-Block Tracksuit__Stand collar, panelled sleeve, tapered jogger. Poly tricot 240-260 GSM. Sizes XS-XXL.webp",
-    "02 Panelled Two-Piece Tracksuit__Diagonal front panel, zip pockets, elasticated cuff. Sizes S-3XL.webp",
-    "03 Contrast-Sleeve Tracksuit__Raglan contrast sleeve, side tape on leg, full-length zip. 250 GSM.webp",
-    "04 Jacquard Jacket and Jogger__All-over woven pattern, ribbed collar and hem. 280-300 GSM.webp",
-    "05 Hooded Fleece Tracksuit__Lined hood, kangaroo pocket, drawcord waist. French terry 300-340 GSM.webp"
+  "loose": [],
+  "groups": [
+    {
+      "dir": "01 Tracksuits",
+      "files": [
+        "1-front.webp",
+        "2-back.webp"
+      ]
+    },
+    {
+      "dir": "02 Tracksuits",
+      "files": [
+        "1-front.webp"
+      ]
+    },
+    {
+      "dir": "03 Tracksuits",
+      "files": [
+        "1-front.webp"
+      ]
+    },
+    {
+      "dir": "04 Tracksuits",
+      "files": [
+        "1-front.webp"
+      ]
+    },
+    {
+      "dir": "05 Jackets",
+      "files": [
+        "1-front.webp"
+      ]
+    },
+    {
+      "dir": "06 Hoodies",
+      "files": [
+        "1-front.webp"
+      ]
+    }
   ]
 }

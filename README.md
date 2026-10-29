@@ -1,121 +1,142 @@
 # Eagle Mart website
 
-A single-page site for Eagle Mart, apparel manufacturer and exporter, Sialkot, Pakistan.
-No build step, no dependencies, nothing to install.
+A single-page B2B site for Eagle Mart, apparel manufacturer and exporter,
+Sialkot, Pakistan. No build step, no dependencies, nothing to install.
 
-**Product photos load straight from a folder.** Put a picture in
-`images/products` and it appears on the site. You don't edit any code.
+**You never type a product name.** Drop photos into a folder and the page
+gives each product a style code automatically: EM-001, EM-002, EM-003.
 
-## What's in here
+## Adding a product
+
+1. In your repository go to `images/products`.
+2. **Add file → Upload files**, then type the folder in the file name box,
+   for example `07/front.jpg`, and drag the photo in. Add the second photo
+   as `07/back.jpg`. Commit.
+3. Refresh the site. The product is there as **EM-007**, and hovering the
+   photo shows the back.
+
+Rules, all of them:
+
+- **One folder per product.** The folder's position sets the order on the
+  page and the style code.
+- **First photo = front, second = back.** Sorted by filename, so `1.jpg`
+  and `2.jpg` works. If a filename contains the word `front` or `back`,
+  that wins regardless of order.
+- **One photo is fine.** The card just won't flip.
+- **Three or more** all show in the large pop-up view.
+
+### Category filter (optional)
+
+Put a word after the number in the folder name and it becomes a category
+label on the card, with filter buttons above the grid:
 
 ```
-index.html            the whole site
-image-list.json       a list of your pictures, kept up to date for you
-images/
-  logo.*              the mark in the top bar (square)
-  hero.*              the big photo at the top (tall portrait)
-  about.*             the photo in the About section (tall portrait)
-  products/           every photo in here shows in the product grid
-.github/              the small job that keeps image-list.json current
-README.md             this file
+images/products/01 Tracksuits/
+images/products/05 Jackets/
+images/products/06 Hoodies/
 ```
+
+The filter buttons only appear once you have two or more categories.
+
+### Don't want folders?
+
+Drop photos loose into `images/products` instead. They pair up two at a
+time in filename order — first is front, second is back. Upload them in
+pairs and it works out.
+
+### Changing the style code prefix
+
+Open `index.html`, find `var STYLE_PREFIX = 'EM-';` near the bottom and
+change it. `EM-001` becomes whatever you set.
+
+## The three fixed photos
+
+Drop these into `images/` with any extension:
+
+| File | Where it shows | Shape |
+| --- | --- | --- |
+| `logo.*` | top bar | square, about 500 × 500 |
+| `hero.*` | the big photo at the top | tall portrait, about 900 × 1400 |
+| `about.*` | the About section | tall portrait |
+
+Delete the old one so there's only one file per name.
+
+## Formats
+
+`jpg`, `jpeg`, `png`, `webp`, `gif`, `avif`, `bmp` and `svg` all display.
+
+**`.heic` does not work in any browser.** If you shoot on iPhone, set
+Settings → Camera → Formats to *Most Compatible* before your next shoot,
+or convert the files to jpg first.
+
+Product photos look best portrait at 4:5 (about 800 × 1000 pixels) with the
+garment centred — the page crops anything else to 4:5 from the middle. Keep
+each file under about 300 KB so the page stays quick.
+
+## What's on the page
+
+- Hero, trade terms strip, and a scrolling capabilities band
+- Product grid with front/back flip, category filter, and a pop-up viewer
+  with arrow keys and swipe
+- **Add to enquiry** on each product. Buyers tick the styles they want; the
+  selection follows them to the quote form and into the email or WhatsApp
+  message. It survives a page refresh.
+- Private label and OEM capabilities
+- Four-stage ordering process
+- Size chart with a centimetres / inches switch
+- Fabric and weight reference table
+- Shipping routes and incoterms
+- FAQ
+- About, contact details, and a quote form that opens the visitor's own
+  mail app or WhatsApp
 
 ## Putting it online (GitHub Pages)
 
 1. Create a **public** repository on github.com.
-2. Upload everything in this folder, keeping the folder structure. The easiest
-   way is GitHub's **Add file → Upload files**, then drag the whole folder in.
-3. Settings → Pages → Source: *Deploy from a branch*, branch `main`, folder
-   `/ (root)`. Save.
-4. After a minute your site is live at
+2. Upload everything in this folder, keeping the structure.
+3. Settings → Pages → Source: *Deploy from a branch*, branch `main`,
+   folder `/ (root)`. Save.
+4. After a minute the site is live at
    `https://yourusername.github.io/your-repo-name`.
 
-## Adding a product
+The repository must be public for the page to read its own image folder.
 
-1. Go to `images/products` in your repository.
-2. **Add file → Upload files**, drag your photo in, commit.
-3. Refresh the site. The product is there.
-
-That's it. Removing a photo removes the product. There's no list to keep in sync.
-
-### The filename becomes the product name
-
-| Filename | Shows as |
-| --- | --- |
-| `Navy Bomber Jacket.jpg` | **Navy Bomber Jacket** |
-| `03 Navy Bomber Jacket.jpg` | **Navy Bomber Jacket** — the `03` only sets the position in the grid |
-| `03 Navy Bomber Jacket__Poly twill 260 GSM. Sizes S-3XL.jpg` | **Navy Bomber Jacket** with the detail line underneath |
-
-Two underscores `__` separate the name from the detail line. Both parts are
-optional extras — a plain filename works fine on its own.
-
-Products are sorted by filename, so numbering them `01`, `02`, `03` gives you
-full control of the order. Leave the numbers off and they sort alphabetically.
-
-### Formats and sizes
-
-`jpg`, `jpeg`, `png`, `webp`, `gif`, `avif`, `bmp` and `svg` all work.
-
-One catch: iPhone photos saved as **`.heic` will not display in any browser**.
-Set your phone's camera format to *Most Compatible* (Settings → Camera →
-Formats), or convert the files to jpg before uploading.
-
-For the best result, product photos should be portrait at roughly 4:5
-(about 800 × 1000 pixels) with the garment centred — the page crops anything
-else to 4:5 from the middle. Keep each file under about 300 KB so the page
-stays quick. Hero and about photos look best as taller portraits, around
-900 × 1400.
-
-### Changing the hero, about or logo photo
-
-Drop a file named `hero`, `about` or `logo` into `images/` with any extension
-you like — `hero.jpg`, `hero.png`, `hero.webp` all work. If one is already
-there, delete the old one so there's only one file per name.
-
-## The text tile at the end of the grid
-
-The last tile lists things you make but have no photo for yet. To change it,
-open `index.html`, scroll to the bottom and edit the `MADE_TO_ORDER` list.
-Set `SHOW_MADE_TO_ORDER = false` to hide that tile.
-
-## If you move to your own domain
-
-The site works out which repository it's in from the `github.io` address. On a
-custom domain like `eaglemart.com` it can't do that, so open `index.html`,
-scroll to the bottom, and fill in these two lines once:
+On a custom domain like `eaglemart.com` the page can't work out which
+repository it belongs to, so fill in these two lines in `index.html` once:
 
 ```js
 var GITHUB_USER = 'yourusername';
 var GITHUB_REPO = 'your-repo-name';
 ```
 
-## Things to check before you promote the site
+## Things to correct before you promote the site
 
-The trade terms and the fabric table are **placeholders** and need to match
-what you actually offer:
+These are **placeholders I wrote as plausible industry defaults**. They need
+to match what you actually offer:
 
-- The five figures in the strip under the hero: minimum order, sampling time,
-  bulk lead time, terms, shipping origin.
-- The whole fabric and weight table in the Specifications section.
+- The five figures in the strip under the hero: minimum order, sampling
+  time, bulk lead time, incoterms, shipping origin.
+- The **size chart** in the Sizing section. Measure your own block and put
+  your real numbers in. Buyers order against this.
+- The **fabric and weight table** in the Fabrics section.
+- The **shipping routes table**: transit times and ports.
+- The **FAQ answers**, especially the payment terms and the MOQ.
 - The city, if you are not based in Sialkot. It appears in the page title,
   the hero, the About section, the contact list and the footer.
 
 ## Contact details used
 
-Changing any of these means a find-and-replace across `index.html`:
+Find and replace these in `index.html` if any change:
 
 - `eaglemart0040@gmail.com`
 - `923187940976` (inside the `wa.me` WhatsApp links)
 - `+92 318 7940976` (the displayed version)
 - `https://www.instagram.com/eaglemart0040`
 
-The quote form has no server behind it. It opens the visitor's own mail app or
-WhatsApp with their details filled in, which is why it works on GitHub Pages.
+## How the folder reading works
 
-## How the folder reading works, briefly
-
-The page asks GitHub's public API what files are in `images/products` and builds
-the grid from the answer. No key or account setup is needed for a public
-repository. If that call is ever unavailable, the page falls back to
-`image-list.json`, which the included GitHub Action regenerates every time you
-upload a photo. You don't have to do anything for either of these.
+The page asks GitHub's public API what's inside `images/products` and builds
+the grid from the answer. No key or setup needed for a public repository.
+If that call is ever unavailable it falls back to `image-list.json`, which
+the included GitHub Action regenerates every time you upload a photo. Both
+run themselves.
